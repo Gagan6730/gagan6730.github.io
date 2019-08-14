@@ -14,7 +14,20 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    var data_1 = {
+            name: "User",
+            email: "gagandeep16037@iiitd.ac.in",
+            message: "Your portfolio was visited by someone"
+        };
+    $(document).ready(function(){
+        $.ajax({
+            type: 'POST',
+            url: 'email.php',
+            data: data_1
+        })
+    });
+</script>
 <body>
     <div id="mobile-menu-open" class="shadow-large">
         <i class="fa fa-bars" aria-hidden="true"></i>
