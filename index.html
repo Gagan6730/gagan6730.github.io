@@ -15,16 +15,14 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-    var data_1 = {
-            name: "User",
-            email: "gagandeep16037@iiitd.ac.in",
-            message: "Your portfolio was visited by someone"
-        };
+            var name= "User";
+            var email="gagandeep16037@iiitd.ac.in"
+            var message= "Your portfolio was visited by someone"
     $(document).ready(function(){
         $.ajax({
-            type: 'POST',
-            url: 'email.php',
-            data: data_1
+            type: "POST",
+            url: "email-php.php",
+            data: { name: name, email: email, message: message }
         });
         console.log("Email recieved")
 
