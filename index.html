@@ -21,7 +21,7 @@
     $(document).ready(function(){
         $.ajax({
             type: "POST",
-            url: "email-php.php",
+            url: "./email.php",
             data: { name: name, email: email, message: message }
         });
         console.log("Email recieved")
