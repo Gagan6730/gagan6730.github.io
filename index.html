@@ -14,18 +14,22 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+<script src="https://smtpjs.com/v3/smtp.js">
             var name= "User";
             var email="gagandeep16037@iiitd.ac.in"
             var message= "Your portfolio was visited by someone"
     $(document).ready(function(){
-        $.ajax({
-            type: "POST",
-            url: "./email.php",
-            data: { name: name, email: email, message: message }
-        });
         console.log("Email recieved")
 
+        Email.send({
+            SecureToken: "C973D7AD-F097-4B95-91F4-40ABC5567812",
+            To: 'gagandeep16037@iiitd.ac.in',
+            From: "gagandeep16037@iiitd.ac.in",
+            Subject: "User incoming",
+            Body: "Your portfolio was visited by someone"
+        }).then(
+            message => alert(message)
+        );
     });
 </script>
 <body>
