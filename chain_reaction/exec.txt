@@ -1,1 +1,3 @@
 Run the following file: "ChainReaction.jar"
+
+Note: You must install JRE: Java Runtime Environment to run the app.
