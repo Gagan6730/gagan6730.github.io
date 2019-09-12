@@ -1,4 +1,15 @@
-
+<!-- <?php
+if(isset($_POST['Submit'])){
+$subject = $_POST['_subject'];
+$email = $_POST['_replyto'];
+$message = $_POST['message'];
+$headers = "From:".$email."\r\n" ;
+$message = wordwrap($message,70);
+mail("gagandeep16037@iiitd.ac.in", $subject, $message,$headers);
+ echo "Mail Sent. Thank you "
+}
+?> -->
+<?php include "email.php"?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -308,6 +319,9 @@
         <h2 class="heading">Skills</h2>
         <ul>
             <li>JavaScript</li>
+            <li>JQuery</li>
+            <li>Ajax</li>
+            <!-- <li>JavaScript</li> -->
             <li>JAVA</li>
             <li>Python</li>
             <li>Ruby</li>
@@ -315,7 +329,7 @@
             <li>Pandas</li>
             <li>Seaborn</li>
             <li>Django</li>
-            <li>C++</li>
+            <!-- <li>C++</li> -->
             <li>Ruby on Rails</li>
             <li>HTML</li>
             <li>CSS</li>
@@ -370,12 +384,14 @@
     <div id="contact">
          <h2>Get in Touch</h2>
          <div id="contact-form">
-           <form method="POST" action="mailto:gagandeep16037@iiitd.ac.in">
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
-                <input type="email" name="_replyto" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
+           <!-- <form method="POST" action="#"> -->
+                <input type="hidden" id="subject" name="subject" value="Contact request from personal website" />
+                <input id="senders-email" type="email" name="email" placeholder="Your email" required>
+                <textarea id="msg" name="message" placeholder="Your message" required></textarea>
+                <!-- <input type="button" id="submit" value="Send" style="background: white; color:#3498db "/> -->
+                <button name="Submit" onClick="sendContact();">Send</button>
+            <!-- </form> -->
+            <!-- <h3><?php include "secure_email_code.php"?></h3> -->
          </div>
         <!-- End #contact-form  -->        
     </div>
@@ -430,7 +446,26 @@
         </div>
     </footer>
     <!-- End footer -->
-
+    <script>
+       
+            function sendContact() {
+                    
+                   
+                        jQuery.ajax({
+                            url: "email.php",
+                            data: 'userEmail=' +
+                                $("#senders-email").val() + '&subject=' +
+                                $("#subject").val() + '&content=' +
+                                $("#msg").val(),
+                            type: "POST",
+                            success: function (data) {
+                            },
+                            error: function () { }
+                        });
+                    
+                }
+        
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
 </body>
